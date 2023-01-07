@@ -1,0 +1,10 @@
+.icon {
+  &:hover {
+    opacity: .8;
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: .5;
+  }
+}

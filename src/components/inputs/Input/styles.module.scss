@@ -1,0 +1,19 @@
+@import "styles/colors.scss";
+
+.Input {
+  color: $primary-text;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px $base solid;
+  background: none;
+  min-width: 100%;
+  outline: none;
+  -webkit-box-shadow: -2px 59px 38px -41px rgba(150,69,150,1);
+  -moz-box-shadow: -2px 59px 38px -41px rgba(150,69,150,1);
+  box-shadow: -2px 59px 38px -41px rgba(150,69,150,1);
+}
+
+.error{
+  border-bottom: 1px $error solid;
+  color: $error;
+}
