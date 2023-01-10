@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import {useInput} from "../../components/hooks/useInput";
 import {regExp} from "../../regExp";
 import styles from "./styles.module.scss"
+import {registration} from "../../api/registartion";
 
 const SignInBlock = () => {
     const name = useInput(
@@ -31,7 +32,7 @@ const SignInBlock = () => {
         }
     )
 
-    const submit = () => {
+    const submit = async () => {
         const nameValid = name.validate()
         const emailValid = email.validate()
         const passwordValid = password1.validate()
@@ -43,6 +44,12 @@ const SignInBlock = () => {
 
         if (nameValid && emailValid && passwordValid && compatiblePassword) {
             console.log("hello submit")
+            const resp = await registration({
+                name: name.value,
+                email: email.value,
+                password: password1.value
+            })
+            console.log(resp)
         }
     }
 
