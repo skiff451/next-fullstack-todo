@@ -18,3 +18,5 @@ export type RegistrationResponseType = {
 }
 
 export type RegisteredUserResponse = ResponseType<RegistrationResponseType>
+
+export type LogInType = Omit<RegistrationType, "name">

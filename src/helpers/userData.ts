@@ -1,6 +1,6 @@
 import {UserType} from "../types";
 
-export const UserData = {
+export const userData = {
     setUserData: (data: UserType) => {
         if (typeof window !== "undefined") {
             const stringifiedUser = JSON.stringify(data)

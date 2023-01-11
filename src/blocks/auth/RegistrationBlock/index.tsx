@@ -1,14 +1,13 @@
 import React from 'react';
-import InputComposed from "../../components/inputs/InputComposed";
-import Button from "../../components/Button";
-import {useInput} from "../../components/hooks/useInput";
-import {registration} from "../../api/registartion";
-import {regExp} from "../../regExp";
-import {refreshToken} from "../../helpers/refreshToken";
-import styles from "./styles.module.scss"
-import {UserData} from "../../helpers/userData";
-
-const SignInBlock = () => {
+import InputComposed from "../../../components/inputs/InputComposed";
+import Button from "../../../components/Button";
+import {useInput} from "../../../components/hooks/useInput";
+import {registration} from "../../../api/auth";
+import {regExp} from "../../../regExp";
+import {refreshToken} from "../../../helpers/refreshToken";
+import {userData} from "../../../helpers/userData";
+import styles from "../styles.module.scss"
+const RegistrationBlock = () => {
     const name = useInput(
         {
             regexp: regExp.basic,
@@ -51,7 +50,7 @@ const SignInBlock = () => {
             })
 
             refreshToken.setToken(token)
-            UserData.setUserData({id, name: uName, email: uEmail})
+            userData.setUserData({id, name: uName, email: uEmail})
         }
     }
 
@@ -94,4 +93,4 @@ const SignInBlock = () => {
     );
 };
 
-export default SignInBlock;
+export default RegistrationBlock;

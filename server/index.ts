@@ -6,7 +6,7 @@ import cors from 'cors';
 
 dotenv.config();
 import {sequelize} from "./src/db/sequelize";
-import {registrationRouter} from './src/routes/registration';
+import authRouter from './src/routes/auth';
 
 const app: Express = express();
 const port = process.env.PORT;
@@ -23,7 +23,7 @@ app.use(cors(
 app.use(cookieParser())
 app.use(bodyParser.json())
 
-app.use('/registration', registrationRouter);
+app.use('/auth', authRouter);
 app.listen(port, async () => {
     try {
         console.log("here")

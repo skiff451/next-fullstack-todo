@@ -1,0 +1,20 @@
+@import "colors";
+
+.signIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  h1 {
+    color: $primary-text;
+  }
+
+  .change {
+    color: $secondary-text;
+    &:hover{
+      cursor: pointer;
+      color: $base;
+    }
+  }
+}
