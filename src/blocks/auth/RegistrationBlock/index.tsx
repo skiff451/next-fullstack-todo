@@ -1,11 +1,13 @@
 import React from 'react';
-import InputComposed from "../../components/inputs/InputComposed";
-import Button from "../../components/Button";
-import {useInput} from "../../components/hooks/useInput";
-import {regExp} from "../../regExp";
-import styles from "./styles.module.scss"
-
-const SignInBlock = () => {
+import InputComposed from "../../../components/inputs/InputComposed";
+import Button from "../../../components/Button";
+import {useInput} from "../../../components/hooks/useInput";
+import {registration} from "../../../api/auth";
+import {regExp} from "../../../regExp";
+import {refreshToken} from "../../../helpers/refreshToken";
+import {userData} from "../../../helpers/userData";
+import styles from "../styles.module.scss"
+const RegistrationBlock = () => {
     const name = useInput(
         {
             regexp: regExp.basic,
@@ -31,7 +33,7 @@ const SignInBlock = () => {
         }
     )
 
-    const submit = () => {
+    const submit = async () => {
         const nameValid = name.validate()
         const emailValid = email.validate()
         const passwordValid = password1.validate()
@@ -40,9 +42,15 @@ const SignInBlock = () => {
             errorLabel: "incompatible password"
         })
 
-
         if (nameValid && emailValid && passwordValid && compatiblePassword) {
-            console.log("hello submit")
+            const {id, name: uName, email: uEmail, token} = await registration({
+                name: name.value,
+                email: email.value,
+                password: password1.value
+            })
+
+            refreshToken.setToken(token)
+            userData.setUserData({id, name: uName, email: uEmail})
         }
     }
 
@@ -85,4 +93,4 @@ const SignInBlock = () => {
     );
 };
 
-export default SignInBlock;
+export default RegistrationBlock;

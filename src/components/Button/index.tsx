@@ -14,6 +14,8 @@ const Button: FC<Props> = ({label, variant, callback, type = "button"}) => {
         switch (variant) {
             case "primary":
                 return `${styles.primary} ${styles.common}`
+            case "outlined":
+                return `${styles.outlined} ${styles.common}`
         }
     }
 
