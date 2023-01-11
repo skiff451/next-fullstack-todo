@@ -25,5 +25,8 @@
 }
 
 .outlined {
-
+  color: $base;
+  background: $background ;
+  border: 1px $base solid;
+  outline: none;
 }

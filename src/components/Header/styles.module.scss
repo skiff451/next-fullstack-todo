@@ -1,0 +1,22 @@
+@import "styles/colors";
+
+.header {
+  padding: 0 20px;
+  height: 60px;
+  background: linear-gradient(100deg, $background 0%, $base 92%);
+  -webkit-box-shadow: 26px 134px 232px -75px rgba(125, 125, 183, 0.68);
+  -moz-box-shadow: 26px 134px 232px -75px rgba(125, 125, 183, 0.68);
+  box-shadow: 26px 134px 232px -75px rgba(125, 125, 183, 0.68);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .userData {
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    align-items: center;
+    color: $secondary-text;
+  }
+}

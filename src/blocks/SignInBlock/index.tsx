@@ -2,9 +2,11 @@ import React from 'react';
 import InputComposed from "../../components/inputs/InputComposed";
 import Button from "../../components/Button";
 import {useInput} from "../../components/hooks/useInput";
-import {regExp} from "../../regExp";
-import styles from "./styles.module.scss"
 import {registration} from "../../api/registartion";
+import {regExp} from "../../regExp";
+import {refreshToken} from "../../helpers/refreshToken";
+import styles from "./styles.module.scss"
+import {UserData} from "../../helpers/userData";
 
 const SignInBlock = () => {
     const name = useInput(
@@ -41,15 +43,15 @@ const SignInBlock = () => {
             errorLabel: "incompatible password"
         })
 
-
         if (nameValid && emailValid && passwordValid && compatiblePassword) {
-            console.log("hello submit")
-            const resp = await registration({
+            const {id, name: uName, email: uEmail, token} = await registration({
                 name: name.value,
                 email: email.value,
                 password: password1.value
             })
-            console.log(resp)
+
+            refreshToken.setToken(token)
+            UserData.setUserData({id, name: uName, email: uEmail})
         }
     }
 
