@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {InputErrorRule, ValidationItemType} from "../types";
+import {InputErrorRule, ValidationItemType} from "../components/types";
 
 export const useInput = (validation: ValidationItemType | ValidationItemType[]) => {
     const [value, setValue] = useState('')

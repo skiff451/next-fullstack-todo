@@ -1,11 +1,12 @@
 import React from 'react';
 import InputComposed from "../../../components/inputs/InputComposed";
 import Button from "../../../components/Button";
-import {useInput} from "../../../components/hooks/useInput";
+import {useInput} from "../../../hooks/useInput";
 import {registration} from "../../../api/auth";
 import {regExp} from "../../../regExp";
 import {refreshToken} from "../../../helpers/refreshToken";
 import {userData} from "../../../helpers/userData";
+import { useRouter } from 'next/router'
 import styles from "../styles.module.scss"
 const RegistrationBlock = () => {
     const name = useInput(
@@ -33,6 +34,8 @@ const RegistrationBlock = () => {
         }
     )
 
+    const router = useRouter()
+
     const submit = async () => {
         const nameValid = name.validate()
         const emailValid = email.validate()
@@ -51,6 +54,7 @@ const RegistrationBlock = () => {
 
             refreshToken.setToken(token)
             userData.setUserData({id, name: uName, email: uEmail})
+            await router.push("/")
         }
     }
 
