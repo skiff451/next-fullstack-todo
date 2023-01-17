@@ -1,0 +1,19 @@
+@import "styles/colors";
+
+.deadlineTodo {
+  padding: 15px;
+  color: $secondary-text;
+  border-radius: 20px;
+  -webkit-box-shadow: -1px 6px 35px -18px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 6px 35px -18px rgba(0,0,0,0.75);
+  box-shadow: -1px 6px 35px -18px rgba(0,0,0,0.75);
+  transition: 120ms all ease-in-out;
+
+  &:hover{
+    cursor: pointer;
+    -webkit-box-shadow: -1px 6px 35px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 6px 35px -10px rgba(0,0,0,0.75);
+    box-shadow: -1px 6px 35px -10px rgba(0,0,0,0.75);
+  }
+
+}

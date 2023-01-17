@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
-import styles from "./styles.module.scss"
 import {InputPropsType} from "../../types";
-
+import styles from "./styles.module.scss"
 const Input: FC<InputPropsType> = ({type, value, setValue, placeholder, disabled, error}) => {
     const style = !error ? styles.Input : `${styles.Input} ${styles.error}`
     return (

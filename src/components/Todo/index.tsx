@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import styles from "./styles.module.scss"
 import Date from "../Date/Date";
 import TodoFooter from "./TodoFooter";
 import Icon from "../Icon";
+import styles from "./styles.module.scss"
 
 type Props = {
     created: Date;
