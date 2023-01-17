@@ -44,7 +44,6 @@ const MainBlock = () => {
                     author={"S.Serg"}
                 />
             </div>
-
         </main>
     );
 };

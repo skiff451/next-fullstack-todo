@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import React, {useEffect} from "react";
+import React from "react";
 import MainBlock from "../src/blocks/main";
 
-export default function Home() {
-    useEffect(() => {
 
-    })
+
+export default function Home() {
     return (
         <>
             <Head>
@@ -18,3 +17,4 @@ export default function Home() {
         </>
     )
 }
+

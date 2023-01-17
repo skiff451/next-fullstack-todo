@@ -17,3 +17,7 @@ export const login = async (data: LogInType) => {
         = await axiosInstance.post<RegisteredUserResponse>(routes.auth.login, data);
     return registrationData.body
 }
+
+export const check = async ()=>{
+    await axiosInstance.get(routes.auth.checkLogin);
+}
