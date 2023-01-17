@@ -1,0 +1,16 @@
+.filters {
+  padding: 3px;
+  .radioGroup {
+    > * {
+      margin-right: 20px;
+    }
+  }
+
+  .buttonGroup {
+    margin-top: 10px;
+
+    > * {
+      margin-right: 20px;
+    }
+  }
+}

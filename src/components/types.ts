@@ -1,13 +1,13 @@
 import React from "react";
 
-export type InputType =  "text" | "password" | "email"
+export type InputType = "text" | "password" | "email" | "search"
 export type InputPropsType = {
     type: InputType;
     placeholder?: string;
     value: string;
-    setValue:  React.Dispatch<React.SetStateAction<string>>
+    setValue: React.Dispatch<React.SetStateAction<string>>
     disabled?: boolean;
-    error?:boolean;
+    error?: boolean;
 }
 
 export type InputErrorRule = {

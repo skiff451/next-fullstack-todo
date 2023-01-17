@@ -1,0 +1,66 @@
+@import "../../../styles/colors";
+
+.todo {
+  position: relative;
+  color: $secondary-text;
+  -webkit-box-shadow: -1px 6px 35px -14px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 6px 35px -14px rgba(0,0,0,0.75);
+  box-shadow: -1px 6px 35px -14px rgba(0,0,0,0.75);
+  padding: 20px;
+  border-radius: 20px;
+  //border: 2px $base solid;
+
+  h3 {
+    margin: 5px;
+    text-align: center;
+    color: $base-strong;
+  }
+
+  p {
+    margin: 10px 0;
+    color: $secondary-text;
+    font-size: 14px;
+  }
+
+  .footer {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    .text {
+      font-weight: bold;
+    }
+
+    .label {
+      font-weight: normal;
+      opacity: .8;
+    }
+  }
+
+  .iconWrapper {
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 15px;
+    right: 50px;
+  }
+
+  .done {
+    position: absolute;
+    top: 15px;
+    left: 50px;
+  }
+}
+
+.inProcess {
+  background: linear-gradient(0deg, $background-todo-in-process 0%, $background 10%);
+}
+
+.complete {
+  background: linear-gradient(0deg, $background-todo-complete 0%, $background 10%);
+}
+
+.expired {
+  background: linear-gradient(0deg, $background-todo-expired 0%, $background 10%);
+}

@@ -1,0 +1,9 @@
+.searchBar {
+  width: 40%;
+  display: flex;
+  align-items: flex-end;
+
+  > button {
+    margin-left: 10px;
+  }
+}

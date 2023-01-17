@@ -1,11 +1,13 @@
 import React from 'react';
 import InputComposed from "../../../components/inputs/InputComposed";
 import Button from "../../../components/Button";
-import {useInput} from "../../../components/hooks/useInput";
+import {useInput} from "../../../hooks/useInput";
 import {login} from "../../../api/auth";
 import {regExp} from "../../../regExp";
 import {refreshToken} from "../../../helpers/refreshToken";
 import {userData} from "../../../helpers/userData";
+import { useRouter } from 'next/router'
+
 
 import styles from "../styles.module.scss"
 
@@ -22,7 +24,7 @@ const LogInBlock = () => {
             errorMessage: "invalid password"
         }
     )
-
+    const router = useRouter()
     const submit = async () => {
         const emailValid = email.validate()
         const passwordValid = password1.validate()
@@ -34,6 +36,7 @@ const LogInBlock = () => {
             })
             refreshToken.setToken(token)
             userData.setUserData({id, name: uName, email: uEmail})
+            await router.push("/")
         }
     }
     return (
