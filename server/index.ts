@@ -7,6 +7,8 @@ import cors from 'cors';
 dotenv.config();
 import {sequelize} from "./src/db/sequelize";
 import authRouter from './src/routes/auth';
+import todoRouter from './src/routes/todos';
+import {authMiddleware} from "./src/services/auth";
 
 const app: Express = express();
 const port = process.env.PORT;
@@ -18,15 +20,17 @@ app.use(cors(
         origin: `http://${clientHost}:${clientPort}`,
         credentials: true,
         // optionSuccessStatus: 200,
+        // allowedHeaders: ["Authorization", "*"]
     }
 ))
 app.use(cookieParser())
 app.use(bodyParser.json())
+app.use(authMiddleware);
 
 app.use('/auth', authRouter);
+app.use('/todos', todoRouter);
 app.listen(port, async () => {
     try {
-        console.log("here")
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
         await sequelize.sync();

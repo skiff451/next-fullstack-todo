@@ -1,0 +1,24 @@
+@import "styles/colors";
+
+.wrapper {
+  padding: 30px 40px;
+  background: $background;
+  min-width: 400px;
+  border-radius: 30px;
+
+  .closeWrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .submitWrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
+  > * {
+    margin-bottom: 15px;
+  }
+}

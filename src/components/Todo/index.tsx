@@ -1,17 +1,10 @@
 import React, {FC} from 'react';
-import Date from "../Date/Date";
 import TodoFooter from "./TodoFooter";
 import Icon from "../Icon";
 import styles from "./styles.module.scss"
+import {TodoType} from "../types";
 
-type Props = {
-    created: Date;
-    title: string;
-    description: string;
-    deadline: Date;
-    status: "in process" | "completed" | "expired";
-    author?: string;
-}
+type Props = TodoType
 
 const Todo: FC<Props> = (
     {

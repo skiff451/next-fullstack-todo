@@ -2,12 +2,11 @@ import React from 'react';
 import InputComposed from "../../../components/inputs/InputComposed";
 import Button from "../../../components/Button";
 import {useInput} from "../../../hooks/useInput";
-import {registration} from "../../../api/auth";
-import {regExp} from "../../../regExp";
-import {refreshToken} from "../../../helpers/refreshToken";
-import {userData} from "../../../helpers/userData";
 import { useRouter } from 'next/router'
+import {submit} from "./submit";
+import {regExp} from "../../../regExp";
 import styles from "../styles.module.scss"
+
 const RegistrationBlock = () => {
     const name = useInput(
         {
@@ -36,26 +35,10 @@ const RegistrationBlock = () => {
 
     const router = useRouter()
 
-    const submit = async () => {
-        const nameValid = name.validate()
-        const emailValid = email.validate()
-        const passwordValid = password1.validate()
-        const compatiblePassword = password2.validate({
-            condition: password1.value === password2.value,
-            errorLabel: "incompatible password"
+    const submitHandler = async () => {
+        await submit(name, email, password1, password2, async () => {
+            await router.push('')
         })
-
-        if (nameValid && emailValid && passwordValid && compatiblePassword) {
-            const {id, name: uName, email: uEmail, token} = await registration({
-                name: name.value,
-                email: email.value,
-                password: password1.value
-            })
-
-            refreshToken.setToken(token)
-            userData.setUserData({id, name: uName, email: uEmail})
-            await router.push("/")
-        }
     }
 
     return (
@@ -92,7 +75,7 @@ const RegistrationBlock = () => {
                 error={password2.error}
                 errorLabel={password2.errorLabel}
             />
-            <Button label={"submit"} variant={"primary"} callback={submit}/>
+            <Button label={"submit"} variant={"primary"} callback={submitHandler}/>
         </div>
     );
 };

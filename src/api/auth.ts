@@ -1,5 +1,5 @@
 import {axiosInstance} from './axios-instance'
-import {LogInType, RegisteredUserResponse, RegistrationType} from "./types";
+import {LogInType, RefreshResponse, RegisteredUserResponse, RegistrationType} from "./types";
 import routes from "./routes.json"
 
 export const registration = async (data: RegistrationType) => {
@@ -18,6 +18,15 @@ export const login = async (data: LogInType) => {
     return registrationData.body
 }
 
-export const check = async ()=>{
-    await axiosInstance.get(routes.auth.checkLogin);
+export const refresh = async (refreshToken: string) => {
+    const {data: refreshData}
+        = await axiosInstance
+        .get<RefreshResponse>(routes.auth.refresh, {
+            headers: {
+                Authorization: `Bearer ${refreshToken}`
+            }
+        });
+    return refreshData.body
 }
+
+

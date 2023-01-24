@@ -2,13 +2,9 @@ import React from 'react';
 import InputComposed from "../../../components/inputs/InputComposed";
 import Button from "../../../components/Button";
 import {useInput} from "../../../hooks/useInput";
-import {login} from "../../../api/auth";
+import {submit} from "./submit";
+import {useRouter} from "next/router"
 import {regExp} from "../../../regExp";
-import {refreshToken} from "../../../helpers/refreshToken";
-import {userData} from "../../../helpers/userData";
-import { useRouter } from 'next/router'
-
-
 import styles from "../styles.module.scss"
 
 const LogInBlock = () => {
@@ -18,27 +14,22 @@ const LogInBlock = () => {
             errorMessage: "invalid email"
         }
     )
-    const password1 = useInput(
+    const password = useInput(
         {
             regexp: regExp.password,
             errorMessage: "invalid password"
         }
     )
-    const router = useRouter()
-    const submit = async () => {
-        const emailValid = email.validate()
-        const passwordValid = password1.validate()
 
-        if (emailValid && passwordValid) {
-            const {id, name: uName, email: uEmail, token} = await login({
-                email: email.value,
-                password: password1.value
-            })
-            refreshToken.setToken(token)
-            userData.setUserData({id, name: uName, email: uEmail})
-            await router.push("/")
-        }
+    const router = useRouter()
+
+    const submitHandler = async () => {
+        await submit(email, password, async () => {
+            await router.push('/')
+        })
+
     }
+
     return (
         <div className={styles.signIn}>
             <InputComposed
@@ -52,13 +43,13 @@ const LogInBlock = () => {
             <InputComposed
                 type={'password'}
                 label={"password"}
-                value={password1.value}
-                setValue={password1.setValue}
-                error={password1.error}
-                errorLabel={password1.errorLabel}
+                value={password.value}
+                setValue={password.setValue}
+                error={password.error}
+                errorLabel={password.errorLabel}
             />
 
-            <Button label={"submit"} variant={"primary"} callback={submit}/>
+            <Button label={"submit"} variant={"primary"} callback={submitHandler}/>
         </div>
     );
 };

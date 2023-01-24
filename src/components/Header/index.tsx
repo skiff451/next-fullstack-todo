@@ -4,11 +4,13 @@ import {logout as apiLogout} from "../../api/auth";
 import {userData} from "../../helpers/userData";
 import {refreshToken} from "../../helpers/refreshToken";
 import {UserType} from "../../types";
+import {useRouter} from "next/router";
 import styles from "./styles.module.scss"
 
 const Header: FC = () => {
 
     const [user, setUser] = useState<UserType | null | undefined>()
+    const router = useRouter()
 
     useEffect(() => {
         const localUser = userData.getUserData()
@@ -19,6 +21,7 @@ const Header: FC = () => {
         refreshToken.removeToken()
         userData.removeUserData()
         await apiLogout()
+        await router.push('/sign-in')
     }
 
     return (
@@ -37,12 +40,10 @@ const Header: FC = () => {
                     label={"logIn"}
                     variant={"outlined"}
                     callback={() => {
-
+                        router.push("/sign-in");
                     }}
                 />}
-
         </header>
-
     );
 };
 
