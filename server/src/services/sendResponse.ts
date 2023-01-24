@@ -8,7 +8,7 @@ export const sendJSONResponse = <T>(res: Response, body: T, message?: string) =>
     })
 }
 
-export const sendJSONResponseWithoutBody = <T>(res: Response, message: string, status?: Status) => {
+export const sendJSONResponseWithoutBody = (res: Response, message: string, status?: Status) => {
     if (status) {
         res.status(status).json({
             message
@@ -20,8 +20,8 @@ export const sendJSONResponseWithoutBody = <T>(res: Response, message: string, s
     }
 }
 
-type ErrorStatus = 400 | 401 | 500
-export const sendErrorJSONResponse = <T>(res: Response, e: Error | unknown, status: ErrorStatus, message?: string,) => {
+type ErrorStatus = 400 | 401  | 403 | 500
+export const sendErrorJSONResponse = (res: Response, e: Error | unknown, status: ErrorStatus, message?: string,) => {
     res.status(status).json(
         {
             message,

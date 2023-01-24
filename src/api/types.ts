@@ -1,3 +1,5 @@
+import {TodoType} from "../components/types";
+
 export type RegistrationType = {
     name: string;
     email: string;
@@ -20,3 +22,11 @@ export type RegistrationResponseType = {
 export type RegisteredUserResponse = ResponseType<RegistrationResponseType>
 
 export type LogInType = Omit<RegistrationType, "name">
+
+export type TodoApiType = { id: number } & TodoType
+
+type RefreshType = {
+    refresh: string;
+}
+
+export type RefreshResponse = ResponseType<RefreshType>

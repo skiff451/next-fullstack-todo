@@ -3,17 +3,15 @@ import DeadlineTodo from "../../components/DeadlineTodo";
 import Button from "../../components/Button";
 import SearchBar from "../../components/SearchBar";
 import Filters from "../../components/Filters";
-import Todo from "../../components/Todo";
+import TodosWrapper from "../../components/TodosWrapper";
+import ModalWrapper from "../../components/Modal/ModalWrapper";
+import CreateTodoModalComponent from "../../components/Modal/CreateTodoModalComponent";
 import styles from "./styles.module.scss";
 
-const testDescription = `
-But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account 
-of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. one who avoids a pain 
-that produces no resultant pleasure?
-`
 
 const MainBlock = () => {
     const [search, setSearch] = useState("")
+    const [modal, setModal] = useState(false)
     return (
         <main className={styles.main}>
             <div className={styles.headerWrapper}>
@@ -26,6 +24,7 @@ const MainBlock = () => {
                     label={"create todo"}
                     variant={"primary"}
                     callback={() => {
+                        setModal(true)
                     }}/>
             </div>
             <div className={styles.searchWrapper}>
@@ -34,16 +33,12 @@ const MainBlock = () => {
             </div>
 
             <div className={styles.todoWrapper}>
-                <Todo
-                    title={"new todo"}
-                    description={
-                        testDescription}
-                    created={new Date()}
-                    status={"in process"}
-                    deadline={new Date()}
-                    author={"S.Serg"}
-                />
+                <TodosWrapper/>
             </div>
+
+            {modal && <ModalWrapper setOpen={setModal}>
+                < CreateTodoModalComponent setOpen={setModal}/>
+            </ModalWrapper>}
         </main>
     );
 };

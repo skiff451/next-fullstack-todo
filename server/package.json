@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "description": "api-backend",
   "main": "index.ts",
-
-
   "scripts": {
     "test": "test",
     "build": "npx tsc",
@@ -24,7 +22,8 @@
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "process": "^0.11.10",
-    "sequelize": "^6.28.0"
+    "sequelize": "^6.28.0",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",

@@ -12,6 +12,9 @@ const InputWithLabel: FC<Props> = ({type, label, value, setValue, placeholder, d
     switch (type) {
         case "text":
         case "email":
+        case "search":
+        case "date":
+        case "time":
             return (
                 <LabelWrapper label={label} error={error}>
                     <Input type={type}

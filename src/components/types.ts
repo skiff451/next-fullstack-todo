@@ -1,6 +1,6 @@
 import React from "react";
 
-export type InputType = "text" | "password" | "email" | "search"
+export type InputType = "text" | "password" | "email" | "search" | "date" | "time"
 export type InputPropsType = {
     type: InputType;
     placeholder?: string;
@@ -23,4 +23,13 @@ export type InputErrorProps = {
 export type ValidationItemType = {
     regexp: RegExp;
     errorMessage: string;
+}
+
+export type TodoType = {
+    created: Date;
+    title: string;
+    description: string;
+    deadline: Date;
+    status: "in process" | "completed" | "expired";
+    author?: string;
 }

@@ -4,7 +4,7 @@ export const hash = {
     getHash: (plainPassword: string) => {
         return bcrypt.hashSync(plainPassword, parseInt(saltRounds as string));
     },
-    compareHash: (password: string, hash: string) => {
+    compareHash: (password: string, hash: string):boolean => {
         return bcrypt.compareSync(password, hash);
     }
 }

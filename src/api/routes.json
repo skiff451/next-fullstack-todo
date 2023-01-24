@@ -1,8 +1,15 @@
 {
   "auth": {
-    "checkLogin": "auth/check",
     "registration": "auth/registration",
     "logout": "auth/logout",
-    "login": "auth/login"
+    "login": "auth/login",
+    "refresh": "auth/refresh"
+  },
+  "todos": {
+    "create": "todos/create",
+    "all": "todos/all",
+    "by-id": "",
+    "by-date": "",
+    "by-name": ""
   }
 }
